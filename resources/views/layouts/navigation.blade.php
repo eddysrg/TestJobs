@@ -10,6 +10,8 @@
                     </a>
                 </div>
 
+                @auth
+                @can('create', App\Models\Vacant::class)
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('vacants.index')" :active="request()->routeIs('vacants.index')">
@@ -20,10 +22,21 @@
                         {{ __('Create Vacant') }}
                     </x-nav-link>
                 </div>
+                @endcan
+                @endauth
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
+                @auth
+
+                @can('create', App\Models\Vacant::class)
+                <a class="mr-2 w-7 h-7 bg-indigo-600 hover:bg-indigo-800 rounded-full flex flex-col justify-center items-center text-sm font-extrabold text-white"
+                    href="{{route('notifications')}}">
+                    {{Auth::user()->unreadNotifications->count()}}
+                </a>
+                @endcan
+
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
@@ -57,6 +70,21 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
+                @endauth
+
+                @guest
+
+                <!-- Navigation Links -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('login')">
+                        {{ __('Login') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('register')">
+                        {{ __('Create Account') }}
+                    </x-nav-link>
+                </div>
+                @endguest
             </div>
 
             <!-- Hamburger -->
@@ -77,6 +105,7 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+        @auth
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('vacants.index')" :active="request()->routeIs('vacants.index')">
                 {{ __('My Vacants') }}
@@ -85,6 +114,19 @@
             <x-responsive-nav-link :href="route('vacants.create')" :active="request()->routeIs('vacants.create')">
                 {{ __('Create Vacant') }}
             </x-responsive-nav-link>
+
+            @if (auth()->user()->rol === 2)
+            <div class="flex gap-2 items-center p-3">
+                <a class="mr-2 w-7 h-7 bg-indigo-600 hover:bg-indigo-800 rounded-full flex flex-col justify-center items-center text-sm font-extrabold text-white"
+                    href="{{route('notifications')}}">
+                    {{Auth::user()->unreadNotifications->count()}}
+                </a>
+
+                <p class="text-gray-600 text-base font-medium">
+                    @choice('Notification|Notifications' ,auth()->user()->unreadNotifications->count())
+                </p>
+            </div>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
@@ -104,11 +146,26 @@
                     @csrf
 
                     <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
-                                        this.closest('form').submit();">
+                                            this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
         </div>
+        @endauth
+
+        @guest
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('login')">
+                {{ __('Login') }}
+            </x-responsive-nav-link>
+
+
+            <x-responsive-nav-link :href="route('register')">
+                {{ __('Create Account') }}
+            </x-responsive-nav-link>
+
+        </div>
+        @endguest
     </div>
 </nav>

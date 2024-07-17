@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Vacant;
+use App\Models\Candidate;
 use Illuminate\Http\Request;
 
-class VacantController extends Controller
+class CandidateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,7 @@ class VacantController extends Controller
      */
     public function index()
     {
-
-        $this->authorize('viewAny', Vacant::class);
-
-        return view('vacants.index');
+        //
     }
 
     /**
@@ -27,10 +24,7 @@ class VacantController extends Controller
      */
     public function create()
     {
-
-        $this->authorize('create', Vacant::class);
-
-        return view('vacants.create');
+        //
     }
 
     /**
@@ -47,37 +41,33 @@ class VacantController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function show(Vacant $vacant)
+    public function show(Candidate $candidate)
     {
-        return view('vacants.show', ['vacant' => $vacant]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function edit(Vacant $vacant)
+    public function edit(Candidate $candidate)
     {
-        $this->authorize('update', $vacant);
-
-        return view('vacants.edit', [
-            'vacant' => $vacant
-        ]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Candidate $candidate)
     {
         //
     }
@@ -85,10 +75,10 @@ class VacantController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Candidate $candidate)
     {
         //
     }

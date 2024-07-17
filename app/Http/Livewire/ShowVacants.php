@@ -7,6 +7,14 @@ use Livewire\Component;
 
 class ShowVacants extends Component
 {
+
+    protected $listeners = ['eliminateVacant'];
+
+    public function eliminateVacant(Vacant $vacant)
+    {
+        $vacant->delete();
+    }
+
     public function render()
     {
 
