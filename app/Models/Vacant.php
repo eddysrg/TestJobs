@@ -32,7 +32,7 @@ class Vacant extends Model
 
     public function candidates()
     {
-        return $this->hasMany(Candidate::class);
+        return $this->hasMany(Candidate::class)->orderBy('created_at', 'DESC');
     }
 
     public function recruiter()

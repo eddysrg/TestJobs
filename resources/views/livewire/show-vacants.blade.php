@@ -13,7 +13,9 @@
                 <p class="text-sm text-gray-500">Last day: {{$vacant->last_day}}</p>
             </div>
             <div class="flex flex-col md:flex-row gap-3 items-stretch mt-5 md:mt-0">
-                <a href="#" class="text-center bg-slate-800 py-2 px-4 rounded-lg text-white text-xs font-bold">
+                <a href="{{route('candidates.index', $vacant)}}"
+                    class="text-center bg-slate-800 py-2 px-4 rounded-lg text-white text-xs font-bold">
+                    {{$vacant->candidates->count()}}
                     Candidates
                 </a>
 

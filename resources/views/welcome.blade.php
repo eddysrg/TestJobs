@@ -13,6 +13,8 @@
 
 <body class="antialiased">
     <h1>Welcome</h1>
+    <p>Que tranza morros</p>
+    <a href="{{route('login')}}">Link a login</a>
 </body>
 
 </html>
