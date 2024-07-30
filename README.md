@@ -1,8 +1,12 @@
 ## About TestJobs
 
+![TestJobs photo](https://drive.usercontent.google.com/download?id=1VSG63blIBW3Ph6ik8ZCv1Keena2XNvLL&export=view&authuser=0)
+
 TestJobs is a platform to upload vacancies, obtain employment, apply for vacancies and everything necessary for both candidates and recruiters. The platform is divided into two roles, recruiter and candidate, the candidate can obtain the list of jobs, use the search engine to filter their searches, and apply, while the role for the recruiter can register the vacancy, fill out a form to Enter the information required by the candidates, salary, job description, etc.
 
 This project includes email authentication, form validation, route security implementation, Livewire components, OOP, MVC, MYSQL database modeling and implementation, and many things you can do with Laravel. I have tried to do my best to implement the conventions and good practices of Laravel and its community, I hope you like the project.
+
+![TestJobs photo](https://drive.usercontent.google.com/download?id=1lnMk3Ej8E6o6OjOPapMeg9QWQ60A79pq&export=view&authuser=0)
 
 ## Try it
 
